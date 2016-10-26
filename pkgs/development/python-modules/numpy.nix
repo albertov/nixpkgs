@@ -1,9 +1,10 @@
-{lib, python, buildPythonPackage, isPy27, isPyPy, gfortran, nose, blas}:
+{stdenv, python, buildPythonPackage, isPy27, isPyPy, gfortran, nose, blas}:
 
 args:
 
 let
   inherit (args) version;
+  inherit (stdenv) lib;
 in buildPythonPackage (args // rec {
 
   name = "numpy-${version}";
@@ -12,7 +13,7 @@ in buildPythonPackage (args // rec {
   buildInputs = args.buildInputs or [ gfortran nose ];
   propagatedBuildInputs = args.propagatedBuildInputs or [ passthru.blas ];
 
-  patches = lib.optionals isPy27 [
+  patches = lib.optionals (isPy27 && !(stdenv.cc.isGNU or false)) [
     # See cpython 2.7 patches.
     # numpy.distutils is used by cython during it's check phase
     ./numpy-distutils-C++.patch
