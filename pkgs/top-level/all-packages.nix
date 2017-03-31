@@ -18009,6 +18009,8 @@ with pkgs;
 
   pgfplots = callPackage ../tools/typesetting/tex/pgfplots { };
 
+  pgmodeler = callPackage ../applications/misc/pgmodeler { };
+
   phabricator = callPackage ../misc/phabricator { };
 
   physlock = callPackage ../misc/screensavers/physlock { };
