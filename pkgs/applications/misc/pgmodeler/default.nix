@@ -6,14 +6,14 @@
 , pkgconfig
 }:
 stdenv.mkDerivation rec {
-  version = "2017-02-13";
+  version = "0.9.0-beta";
   name = "pgmodeler-${version}";
 
   src = fetchFromGitHub {
     owner  = "pgmodeler";
     repo   = "pgmodeler";
-    rev    = "db29de595eaf0e21f0a5d4bf76d64fca747e0255";
-    sha256 = "0vf92d4crw5acfk8glqn2f34sfvgy19qp12hn8h8kzsam916s0aa";
+    rev    = "e92cbda61b05aafc3b2b51bff6edd99789db7c68";
+    sha256 = "0njxry96d47kvpalyn96y5sx7r66dkfdw7fmblswg1akx2f3iazr";
   };
 
   buildInputs = [ qt5.qtbase qt5.qtsvg libxml2 postgresql ];
